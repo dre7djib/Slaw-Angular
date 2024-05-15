@@ -1,16 +1,20 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { LoginService } from '../login/login.service';
+import { User } from '../models/users.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsersService {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private loginService:LoginService) { }
 
-  url = "http://localhost:3000/users"
+
+  url = "http://localhost:3000/users";
+
 
   getUsers() {
-    return this.http.get(this.url)
+    const headers = this.loginService.header();
+    return this.http.get<User>(this.url, { headers });
   }
-
 }
