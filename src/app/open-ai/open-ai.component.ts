@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { OpenAiService } from './open-ai.service';
 
 @Component({
@@ -27,7 +27,6 @@ export class OpenAiComponent implements OnInit {
       this.openAiService.getResponse(this.chatGPTForm.value.text).subscribe(
         (res: any) => {
           this.response = res.response;
-          console.log(this.response);
         },
         (error) => {
           console.error('Error:', error);

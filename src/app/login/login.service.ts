@@ -23,4 +23,9 @@ export class LoginService {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return headers;
   }
+
+  token() {
+    const token = sessionStorage.getItem('access_token');
+    return token;
+  }
 }

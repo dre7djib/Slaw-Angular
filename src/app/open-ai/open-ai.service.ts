@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { LoginService } from '../login/login.service';
 
 @Injectable({
   providedIn: 'root'
@@ -8,9 +9,10 @@ import { Observable } from 'rxjs';
 export class OpenAiService {
   url = 'http://localhost:3000/open-ai';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private loginService:LoginService) { }
 
   getResponse(text: string): Observable<any> {
-    return this.http.post(this.url, { text });
+    const headers = this.loginService.token(); 
+    return this.http.post(this.url, { text, headers });
   }
 }
