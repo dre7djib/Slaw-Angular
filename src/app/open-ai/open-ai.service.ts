@@ -10,9 +10,8 @@ export class OpenAiService {
   url = 'http://localhost:3000/open-ai';
 
   constructor(private http: HttpClient, private loginService:LoginService) { }
-
   getResponse(text: string): Observable<any> {
-    const headers = this.loginService.token(); 
-    return this.http.post(this.url, { text, headers });
+    const headers = this.loginService.header();
+    return this.http.post(this.url, { text }, { headers });
   }
 }
