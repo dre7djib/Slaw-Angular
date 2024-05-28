@@ -7,7 +7,7 @@ import { LoginService } from '../login/login.service';
   providedIn: 'root'
 })
 export class OpenAiService {
-  url = 'http://localhost:3000/open-ai';
+  url = 'http://localhost:3000/open-ai/response';
 
   constructor(private http: HttpClient, private loginService:LoginService) { }
   getResponse(text: string): Observable<any> {
