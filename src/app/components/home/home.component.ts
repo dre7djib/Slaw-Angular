@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavbarHomepageComponent } from '../navbar-homepage/navbar-homepage.component';
-import { HeroSectionComponent } from '../hero-section/hero-section.component';
-import { StatHomeSectionComponent } from '../stat-home-section/stat-home-section.component';
+import { HeroSectionComponent } from '../../hero-section/hero-section.component';
+import { StatHomeSectionComponent } from '../../stat-home-section/stat-home-section.component';
 
 
 @Component({
