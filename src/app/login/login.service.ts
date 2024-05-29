@@ -5,12 +5,12 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class LoginService {
-  url = 'http://localhost:3000/auth/login';
+  url_login = 'http://localhost:3000/auth/login';
 
   constructor(private http: HttpClient) { }
 
   login(email: string, password: string) {
-    return this.http.post(this.url, { email, password }, { observe: 'response' })
+    return this.http.post(this.url_login, { email, password }, { observe: 'response' })
       .subscribe((res: any) => sessionStorage.setItem('access_token', res.body.access_token));
   }
 

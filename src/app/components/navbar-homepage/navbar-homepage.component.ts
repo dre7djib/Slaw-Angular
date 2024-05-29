@@ -1,12 +1,20 @@
-import { Component } from '@angular/core';
+import { CommonModule, DOCUMENT } from '@angular/common';
+import { Component, Inject, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-navbar-homepage',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './navbar-homepage.component.html',
-  styleUrl: './navbar-homepage.component.css'
+  styleUrls: ['./navbar-homepage.component.css']
 })
-export class NavbarHompageComponent {
+export class NavbarHomepageComponent implements OnInit {
+  public isLoggedIn: boolean;
 
+  constructor(@Inject(DOCUMENT) private document: Document) {}
+
+  ngOnInit() {
+    const sessionStorage = this.document.defaultView?.sessionStorage;
+    this.isLoggedIn = sessionStorage && sessionStorage.getItem('access_token') ? true : false;
+  }
 }
