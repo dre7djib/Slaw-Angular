@@ -1,27 +1,69 @@
-<div class="bg-white">
-    <div class="flex h-screen flex-col items-center justify-center">
-      <div class="max-h-auto mx-auto w-80 max-w-xl">
-        <div class="mb-8 space-y-3">
-          <p class="text-xl font-semibold">Login</p>
-          <p class="text-gray-500"></p>
-        </div>
-        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-          <div class="mb-10 space-y-3">
-            <div class="space-y-1">
-              <div class="space-y-2">
-                <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for="email">Email</label>
-                <input formControlName="email" class="border-input bg-background ring-offset-background placeholder:text-muted-foreground focus-visible:ring-ring flex h-10 w-full rounded-md border px-3 py-2 text-sm file:border-0 file:bg-transparent file:text-sm file:font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50" id="email" placeholder="mail@example.com" name="email" />
-              </div>
-              <div>
-                <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for="password">Password:</label>
-                <input id="password" type="password" formControlName="password" class="border-input bg-background ring-offset-background placeholder:text-muted-foreground focus-visible:ring-ring flex h-10 w-full rounded-md border px-3 py-2 text-sm file:border-0 file:bg-transparent file:text-sm file:font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50" placeholder="password">
-              </div>
-            </div>
-            <p *ngIf="!isLoggedIn">Whouups ! Utilisateurs ou mots de passe inconnue :/</p>
-            <button class="ring-offset-background focus-visible:ring-ring flex h-10 w-full items-center justify-center whitespace-nowrap rounded-md bg-black px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-black/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50" type="submit">Login</button>
+<div class="flex flex-col justify-center min-h-screen py-12 bg-gray-50 sm:px-6 lg:px-8">
+  <div class="sm:mx-auto sm:w-full sm:max-w-md">
+    <h2 class="mt-6 text-3xl font-extrabold text-center text-gray-900 leading-9">
+      Sign in to your account
+    </h2>
+    <p class="mt-2 text-sm text-center text-gray-600 leading-5 max-w">
+      Or
+      <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition ease-in-out duration-150">
+        create a new account
+      </a>
+    </p>
+  </div>
+
+  <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+    <div class="px-4 py-8 bg-white shadow sm:rounded-lg sm:px-10">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div>
+          <label for="email" class="block text-sm font-medium text-gray-700 leading-5">
+            Email address
+          </label>
+
+          <div class="mt-1 rounded-md shadow-sm">
+            <input formControlName="email" id="email" name="email" type="email" required="" autofocus="" class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5 ">
           </div>
-        </form>
-        <div class="text-center"> No account? <a class="text-blue-500" href="/signup">Create one</a> </div>
-      </div>
+
+        </div>
+
+        <div class="mt-6">
+          <label for="password" class="block text-sm font-medium text-gray-700 leading-5">
+            Password
+          </label>
+
+          <div class="mt-1 rounded-md shadow-sm">
+            <input formControlName="password" id="password" type="password" required="" class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5 ">
+          </div>
+
+        </div>
+
+        <div class="flex items-center justify-between mt-6">
+          <div class="flex items-center">
+            <input id="remember" type="checkbox" class="form-checkbox w-4 h-4 text-indigo-600 transition duration-150 ease-in-out">
+            <label for="remember" class="block ml-2 text-sm text-gray-900 leading-5">
+              Remember
+            </label>
+          </div>
+
+          <div class="text-sm leading-5">
+            <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition ease-in-out duration-150">
+              Forgot your password?
+            </a>
+          </div>
+        </div>
+
+        <div class="mt-6">
+          <span class="block w-full rounded-md shadow-sm">
+            <button type="submit" class="flex justify-center w-full px-4 py-2 text-sm font-medium text-third bg-secondary border border-transparent rounded-md hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out">
+              Login
+            </button>
+          </span>
+        </div>
+        <p *ngIf="!isLoggedIn">Whouups ! Utilisateurs ou mots de passe inconnue :/</p>
+        <div class=" mt-2 flex justify-center sm:mx-auto sm:w-full sm:max-w-m h-4">
+          <a class="text-center text-gray-900 leading-9" href="/">Retour</a>
+        </div>
+      </form>
+
     </div>
   </div>
+</div>
