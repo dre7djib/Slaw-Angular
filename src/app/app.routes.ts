@@ -5,6 +5,7 @@ import { PdfViewerComponent } from './pdf-viewer/pdf-viewer.component';
 import { OpenAiComponent } from './open-ai/open-ai.component';
 import { HomeComponent } from './pages/home/home.component';
 import { FeaturesComponent } from './pages/features/features.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 
 export const routes: Routes = [
@@ -14,5 +15,6 @@ export const routes: Routes = [
     { path: 'auth/login', component: LoginComponent },
     { path: 'home', component: HomeComponent},
     { path: 'features', component: FeaturesComponent},
+    { path: 'dashboard', component: DashboardComponent},
     { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
