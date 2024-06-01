@@ -3,6 +3,8 @@
     <input id="text" type="text" formControlName="text">
     <button type="submit">Submit</button>
   </form>
-  <p>{{ role }}</p>
-  <p>{{ response}}</p>
-  
+<div *ngFor="let item of list">
+    <div class="">{{item.role}}</div>
+    <div>{{item.response}}</div>
+</div>
+

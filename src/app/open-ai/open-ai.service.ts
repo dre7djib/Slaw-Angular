@@ -10,8 +10,13 @@ export class OpenAiService {
   url = 'http://localhost:3000/open-ai/response';
 
   constructor(private http: HttpClient, private loginService:LoginService) { }
-  getResponse(text: string): Observable<any> {
+  getResponse(text: string, thread:string): Observable<any> {
     const headers = this.loginService.header();
-    return this.http.post(this.url, { text }, { headers });
+    return this.http.post(this.url, { text, thread }, { headers });
+  }
+
+  getThreads( thread_id: string): Observable<any> {
+    const headers = this.loginService.header();
+    return this.http.get(`http://localhost:3000/open-ai/thread/${thread_id}/messages`, { headers });
   }
 }
