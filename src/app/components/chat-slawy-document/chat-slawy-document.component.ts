@@ -38,13 +38,11 @@ export class ChatSlawyDocumentComponent {
 
   onSubmit() {
     if (this.chatGPTForm.valid) {
-      this.openAiService.getResponse(this.chatGPTForm.value.text,"thread_V7OnAnpIKSuGxmoOduMXUiGa").subscribe(
+      this.list.push({ role: 'user', response: this.chatGPTForm.value.text })
+      this.openAiService.getResponse(this.chatGPTForm.value.text,"thread_NRvmsPzr56n1g8tO4m4opmcU").subscribe(
         (res: any) => {
           const  messages = res.data.reverse();
-          for (const message of messages) {
-            this.list.push({ role: message.role, response: message.content[0]['text'].value });
-            console.log(`${message.role} > ${message.content[0]['text'].value}`);
-          }
+          this.list.push({ role: messages[0].role, response: messages[0].content[0]['text'].value });
         },
         (error) => {
           console.error('Error:', error);
@@ -57,12 +55,10 @@ export class ChatSlawyDocumentComponent {
   }
 
   getThreadHistory(list: { role: string; response: string; }[])  {
-    this.openAiService.getThreads("thread_V7OnAnpIKSuGxmoOduMXUiGa").subscribe(
+    this.openAiService.getThreads("thread_NRvmsPzr56n1g8tO4m4opmcU").subscribe(
       (res: any) => {
-
         for (const message of res.data.reverse()) {
           list.push({ role: message.role, response: message.content[0]['text'].value });
-          console.log(`${message.role} > ${message.content[0]['text'].value}`);
         }
         return list;
       },

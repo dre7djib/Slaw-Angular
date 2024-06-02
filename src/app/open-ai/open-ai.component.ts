@@ -35,11 +35,10 @@ export class OpenAiComponent implements OnInit {
 
   onSubmit() {
     if (this.chatGPTForm.valid) {
-      this.openAiService.getResponse(this.chatGPTForm.value.text,"thread_W40QzcN0qkrmiVm2gxoXpPzz").subscribe(
+      this.openAiService.getResponse(this.chatGPTForm.value.text,"thread_NRvmsPzr56n1g8tO4m4opmcU").subscribe(
         (res: any) => {
           for (const message of res.data) {
             this.list.push({ role: message.role, response: message.content[0]['text'].value });
-            console.log(`${message.role} > ${message.content[0]['text'].value}`);
           }
         },
         (error) => {
