@@ -21,11 +21,17 @@
           </div>
           <div *ngIf="isLoggedIn" class="flex justify-center items-center mx-6">
             <div>
-              <button type="button" class="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+             <button (click)="burgerClick()" type="button" class="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
                 <span class="absolute -inset-1.5"></span>
                 <span class="sr-only">Open user menu</span>
-                <img class="h-8 w-8 rounded-full" src="" alt="User profile picture">
+                <img class="h-8 w-8 rounded-full" src="https://wallpaperaccess.com/full/1306253.jpg" alt="User profile picture">
               </button>
+              <div *ngIf="onClick" class="fixed pt-7">
+              <ul class="w-48 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                <li class="w-full px-4 py-2 border-b border-gray-200 rounded-t-lg dark:border-gray-600"><a href="/dashboard">Profil</a></li>
+                <li class="w-full px-4 py-2 border-b border-gray-200 dark:border-gray-600"><a href="/dashboard">Subscription</a></li>
+              </ul>
+              </div>
             </div>
           </div>
         </div>
@@ -40,4 +46,3 @@
       </div>
     </div>
   </nav>
-  
