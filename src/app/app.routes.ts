@@ -6,6 +6,7 @@ import { OpenAiComponent } from './open-ai/open-ai.component';
 import { HomeComponent } from './pages/home/home.component';
 import { FeaturesComponent } from './pages/features/features.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 
 export const routes: Routes = [
@@ -16,5 +17,6 @@ export const routes: Routes = [
     { path: 'home', component: HomeComponent},
     { path: 'features', component: FeaturesComponent},
     { path: 'dashboard', component: DashboardComponent},
+    { path: 'profile', component: ProfileComponent},
     { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
