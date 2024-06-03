@@ -7,6 +7,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { FeaturesComponent } from './pages/features/features.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { SignupComponent } from './signup/signup.component';
 
 
 export const routes: Routes = [
@@ -14,6 +15,7 @@ export const routes: Routes = [
     { path: 'pdf', component: PdfViewerComponent},
     { path: 'open-ai', component: OpenAiComponent},
     { path: 'auth/login', component: LoginComponent },
+    { path: 'auth/signup', component: SignupComponent },
     { path: 'home', component: HomeComponent},
     { path: 'features', component: FeaturesComponent},
     { path: 'dashboard', component: DashboardComponent},
