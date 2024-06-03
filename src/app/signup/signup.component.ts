@@ -1,45 +1,54 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { NgModule, Component } from '@angular/core';
 import { SignupService } from './signup.service';
-import { Router } from '@angular/router';
-import e from 'express';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
-  standalone: true,
   templateUrl: './signup.component.html',
-  styleUrl: './signup.component.css',
-  imports: [ReactiveFormsModule, CommonModule]
+  styleUrls: ['./signup.component.css']
 })
-export class SignupComponent{
-  public loginForm : FormGroup = new FormGroup({
-    email: new FormControl(''),
-    password: new FormControl('')
-  });
-  public isLoggedIn: boolean = true;
+export class SignupComponent {
+  public signupForm: FormGroup;
+  public isLoggedIn: boolean = false;
 
+  constructor(private signupService: SignupService, private formBuilder: FormBuilder, private router: Router) {
+    this.signupForm = this.formBuilder.group({
+      name: ['', Validators.required],
+      age: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required],
+      confirmPassword: ['', Validators.required]
+    }, { validator: this.checkPasswords });
+  }
 
-  constructor(private loginService: SignupService, private formBuilder: FormBuilder, private router: Router){}
-
-  ngOnInit() {
-    this.loginForm = this.formBuilder.group({
-      email: [''],
-      password: ['']
-    });
+  checkPasswords(group: FormGroup) {
+    let pass = group.get('password')?.value;
+    let confirmPass = group.get('confirmPassword')?.value;
+  
+    return pass === confirmPass ? null : { notSame: true }     
   }
 
   onSubmit() {
-    if (this.loginForm.valid) {
-      this.loginService.login(this.loginForm.value.email, this.loginForm.value.password);
-      if (this.loginService.token() !== null) {
-        this.isLoggedIn = true;
-        this.router.navigate(['/home']);
-      }
-      else {
-        this.isLoggedIn = false;
-      }
+    if (this.signupForm.valid) {
+      this.signupService.signup(this.signupForm.value.name, this.signupForm.value.age, this.signupForm.value.email, this.signupForm.value.password, this.signupForm.value.confirmPassword)
+        .subscribe((res: any) => {
+          sessionStorage.setItem('access_token', res.body.access_token);
+          if (this.signupService.token() !== null) {
+            this.isLoggedIn = true;
+            this.router.navigate(['/home']);
+          } else {
+            this.isLoggedIn = false;
+          }
+        });
     }
   }
 }
+
+@NgModule({
+  declarations: [SignupComponent],
+  imports: [ReactiveFormsModule, CommonModule]
+})
+export class SignupModule { }

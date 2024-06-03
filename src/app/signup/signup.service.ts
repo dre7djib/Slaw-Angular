@@ -5,13 +5,12 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class SignupService {
-  url_login = 'http://localhost:3000/auth/signup';
+  url_signup = 'http://localhost:3000/users'; 
 
   constructor(private http: HttpClient) { }
 
-  login(email: string, password: string) {
-    return this.http.post(this.url_login, { email, password }, { observe: 'response' })
-      .subscribe((res: any) => sessionStorage.setItem('access_token', res.body.access_token));
+  signup(name: string, age: number, email: string, password: string, photo: string) {
+    return this.http.post(this.url_signup, { name, age, email, password, photo }, { observe: 'response' });
   }
 
   logout() {

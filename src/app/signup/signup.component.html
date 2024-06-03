@@ -1,69 +1,74 @@
 <div class="flex flex-col justify-center min-h-screen py-12 bg-gray-50 sm:px-6 lg:px-8">
-    <div class="sm:mx-auto sm:w-full sm:max-w-md">
-      <h2 class="mt-6 text-3xl font-extrabold text-center text-gray-900 leading-9">
-        Sign in to your account
-      </h2>
-      <p class="mt-2 text-sm text-center text-gray-600 leading-5 max-w">
-        Or
-        <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition ease-in-out duration-150">
-          create a new account
-        </a>
-      </p>
-    </div>
-  
-    <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-      <div class="px-4 py-8 bg-white shadow sm:rounded-lg sm:px-10">
-        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-          <div>
-            <label for="email" class="block text-sm font-medium text-gray-700 leading-5">
-              Email address
-            </label>
-  
-            <div class="mt-1 rounded-md shadow-sm">
-              <input formControlName="email" id="email" name="email" type="email" required="" autofocus="" class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5 ">
-            </div>
-  
-          </div>
-  
-          <div class="mt-6">
-            <label for="password" class="block text-sm font-medium text-gray-700 leading-5">
-              Password
-            </label>
-  
-            <div class="mt-1 rounded-md shadow-sm">
-              <input formControlName="password" id="password" type="password" required="" class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5 ">
-            </div>
-  
-          </div>
-  
-          <div class="flex items-center justify-between mt-6">
-            <div class="flex items-center">
-              <input id="remember" type="checkbox" class="form-checkbox w-4 h-4 text-indigo-600 transition duration-150 ease-in-out">
-              <label for="remember" class="block ml-2 text-sm text-gray-900 leading-5">
-                Remember
-              </label>
-            </div>
-  
-            <div class="text-sm leading-5">
-              <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition ease-in-out duration-150">
-                Forgot your password?
-              </a>
-            </div>
-          </div>
-  
-          <div class="mt-6">
-            <span class="block w-full rounded-md shadow-sm">
-              <button type="submit" class="flex justify-center w-full px-4 py-2 text-sm font-medium text-third bg-secondary border border-transparent rounded-md hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out">
-                Login
-              </button>
-            </span>
-          </div>
-          <p *ngIf="!isLoggedIn">Whouups ! Utilisateurs ou mots de passe inconnue :/</p>
-          <div class=" mt-2 flex justify-center sm:mx-auto sm:w-full sm:max-w-m h-4">
-            <a class="text-center text-gray-900 leading-9" href="/">Retour</a>
-          </div>
-        </form>
-  
-      </div>
-    </div>
+  <div class="sm:mx-auto sm:w-full sm:max-w-md">
+    <h2 class="mt-6 text-3xl font-extrabold text-center text-gray-900 leading-9">
+      Create a new account
+    </h2>
+    <p class="mt-2 text-sm text-center text-gray-600 leading-5 max-w">
+      Or
+      <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition ease-in-out duration-150">
+        sign in to your existing account
+      </a>
+    </p>
   </div>
+
+  <div class="sm:mx-auto sm:w-full sm:max-w-md">
+    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+      <!-- Name field -->
+      <div>
+        <label for="name" class="block text-sm font-medium text-gray-700 leading-5">
+          Name
+        </label>
+        <div class="mt-1 rounded-md shadow-sm">
+          <input formControlName="name" id="name" name="name" type="text" required="" autofocus="" class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5 ">
+        </div>
+      </div>
+
+      <!-- Age field -->
+    <div>
+      <label for="age" class="block text-sm font-medium text-gray-700 leading-5">
+         Age
+  </label>
+  <div class="mt-1 rounded-md shadow-sm">
+    <input formControlName="age" id="age" name="age" type="number" required="" autofocus="" class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5 ">
+  </div>
+</div>
+
+      <!-- Email field -->
+      <div>
+        <label for="email" class="block text-sm font-medium text-gray-700 leading-5">
+          Email
+        </label>
+        <div class="mt-1 rounded-md shadow-sm">
+          <input formControlName="email" id="email" name="email" type="email" required="" class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5 ">
+        </div>
+      </div>
+
+      <!-- Password field -->
+      <div>
+        <label for="password" class="block text-sm font-medium text-gray-700 leading-5">
+          Password
+        </label>
+        <div class="mt-1 rounded-md shadow-sm">
+          <input formControlName="password" id="password" name="password" type="password" required="" class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5 ">
+        </div>
+      </div>
+
+      <!-- Confirm Password field -->
+      <div>
+        <label for="confirmPassword" class="block text-sm font-medium text-gray-700 leading-5">
+          Confirm Password
+        </label>
+        <div class="mt-1 rounded-md shadow-sm">
+          <input formControlName="confirmPassword" id="confirmPassword" name="confirmPassword" type="password" required="" class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5 ">
+        </div>
+      </div>
+
+      <!-- Submit button -->
+      <div class="mt-6">
+        <button type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out">
+          Sign Up
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
