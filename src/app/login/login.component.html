@@ -58,7 +58,8 @@
             </button>
           </span>
         </div>
-        <p *ngIf="!isLoggedIn">Whouups ! Utilisateurs ou mots de passe inconnue :/</p>
+        <p *ngIf="isLoggedIn && successMessage" class="text-green-500">{{ successMessage }}</p>
+        <p *ngIf="!isLoggedIn && errorMessage">{{ errorMessage }}</p>
         <div class=" mt-2 flex justify-center sm:mx-auto sm:w-full sm:max-w-m h-4">
           <a class="text-center text-gray-900 leading-9" href="/">Retour</a>
         </div>

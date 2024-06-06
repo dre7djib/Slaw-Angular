@@ -18,7 +18,8 @@ export class LoginComponent{
     password: new FormControl('')
   });
   public isLoggedIn: boolean = true;
-
+  public errorMessage: string = '';
+  public successMessage: string = '';
 
   constructor(private loginService: LoginService, private formBuilder: FormBuilder, private router: Router){}
 
@@ -29,15 +30,24 @@ export class LoginComponent{
     });
   }
 
-  onSubmit() {
+  async onSubmit() {
     if (this.loginForm.valid) {
-      this.loginService.login(this.loginForm.value.email, this.loginForm.value.password);
-      if (this.loginService.token() !== null) {
-        this.isLoggedIn = true;
-        this.router.navigate(['/home']);
-      }
-      else {
+      console.log(this.loginForm.value);
+      try {
+        await this.loginService.login(this.loginForm.value.email, this.loginForm.value.password);
+        const token = await this.loginService.token();
+        if ( token == null) {
+          this.isLoggedIn = false;
+          this.errorMessage = 'Authentication failed. Please check your credentials.';
+        } else {
+          this.successMessage = 'Authentication successful. Redirecting...';
+          setTimeout(() => {
+            this.router.navigate(['/home']);
+          }, 2000);
+        }
+      } catch (error) {
         this.isLoggedIn = false;
+        this.errorMessage = 'An error occurred during authentication. Please try again later.';
       }
     }
   }
