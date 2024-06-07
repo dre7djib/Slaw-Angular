@@ -2,24 +2,8 @@
     <div class="h-5/6 p-3 overflow-y-scroll">
         <div>
             <div *ngFor="let item of list">
-                <div>{{item.role}}</div>
+                <div class="">{{item.role}}</div>
                 <div markdown ngPreserveWhitespaces>{{item.response}}</div>
-                <div *ngIf="item.role == 'user'">
-                    <div class="flex justify-center">
-                        <div class="w-full">
-                            <hr
-                                class="mt-4 bg-primary h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-neutral-500 to-transparent opacity-25 dark:via-neutral-400" />
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <div class="flex justify-center">
-                        <div class="w-44">
-                            <hr
-                                class="mt-4 bg-primary h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-neutral-500 to-transparent opacity-25 dark:via-neutral-400" />
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
