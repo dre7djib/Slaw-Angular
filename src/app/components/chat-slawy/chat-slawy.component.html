@@ -1,32 +1,36 @@
-<div class="h-screen mt-6 p-4 justify-center items-end flex-col">
-    <div class="h-5/6 p-3 ml-52 pr-60 overflow-y-scroll">
-        <div *ngFor="let item of list; let i = index" #itemElement>
-            <div class="p-4 space-y-4">
-                <div class="flex items-start gap-4">
-                    <div class="grid gap-1">
-                        <div class="font-medium text-secondary">{{item.role}}</div>
-                        <div class="prose prose-stone text-primary">
-                            <div markdown ngPreserveWhitespaces>{{item.response}}</div>
+<div class="h-screen p-2 flex-col justify-center items-center">
+    <div class="h-full w-full p-10 justify-center items-end flex-col rounded-xl bg-third">
+        <div class="h-full overflow-y-scroll">
+            <div class="ml-20">
+                <div *ngFor="let item of list; let i = index" #itemElement>
+                    <div class="p-4 space-y-4">
+                        <div class="flex items-start gap-4">
+                            <div class="grid gap-1">
+                                <div class="font-medium text-secondary">{{item.role}}</div>
+                                <div class="prose prose-stone text-primary">
+                                    <div markdown ngPreserveWhitespaces>{{item.response}}</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="flex justify-center items-center w-screen h-1/6 bg-third">
-        <form [formGroup]="chatGPTForm" (ngSubmit)="onSubmit()" class="h-1/6 w-3/4 fixed">
-            <div class="mx-auto pr-20 p-4 space-y-6">
-                <div class="bg-white dark:bg-gray-900 rounded-lg shadow-md p-6 space-y-4">
-                    <div class="flex">
-                        <textarea formControlName="text"
-                            class="w-full h-10 min-h-8 max-h-32 px-4 py-2 rounded-md focus:outline-none focus:border-blue-500 overflow-x-scroll autoexpand"
-                            placeholder="Type a message..."></textarea>
-                        <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded-md"><img width="24"
-                                height="24" src="https://img.icons8.com/material-outlined/96/sent.png"
-                                alt="sent" /></button>
+        <div class="flex justify-center items-center w-full h-10 ml-20">
+            <form [formGroup]="chatGPTForm" (ngSubmit)="onSubmit()" class="w-full h-full">
+                <div class="">
+                    <div class="bg-white dark:bg-gray-900 rounded-lg w-full px-4">
+                        <div class="flex border rounded-lg w-4/6 fixed">
+                            <textarea formControlName="text"
+                                class="w-full h-10 min-h-8 max-h-20 px-4 py-2 rounded-md focus:outline-none focus:border-blue-500 overflow-x-scroll autoexpand"
+                                placeholder="Type a message..."></textarea>
+                            <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded-md"><img width="24"
+                                    height="24" src="https://img.icons8.com/material-outlined/96/sent.png"
+                                    alt="sent" /></button>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
 </div>

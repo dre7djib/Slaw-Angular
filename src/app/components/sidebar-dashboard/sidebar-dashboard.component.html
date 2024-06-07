@@ -1,25 +1,29 @@
-<div class="h-screen w-32 mt-6 fixed">
-    <nav class="flex justify-center items-center">
-        <div>
-            <a href="/home" class="w-1/4 py-4 pl-6 pr-4 md:pl-4 md:py-0">
-                <span class="p-1 text-xl font-black leading-none text-primary hover:text-secondary select-none">
-                    <span>slaw</span>
-                    <span>.</span>
-                </span>
-            </a>
-        </div>
-    </nav>
-    <div class="flex justify-center">
-        <div class="w-24">
-            <hr
-                class="mt-4 bg-primary h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-neutral-500 to-transparent opacity-25 dark:via-neutral-400" />
-        </div>
-    </div>
-    <div class="flex  justify-center">
-        <ul class="mt-4">
-            <div *ngFor="let item of threadList">
-                <li class="py-2 text-center"><a class="text-primary hover:text-secondary" href="/dashboard/{{item.thread_id}}">{{item.name}}</a></li>
+<div class="h-screen p-3 w-32">
+    <div class="w-full h-full border border-1 rounded-3xl bg-primary">
+        <nav class="flex justify-center items-center pt-6">
+            <div>
+                <a href="/home" class="w-1/4 pr-4 pt-6 md:pl-4 md:py-0">
+                    <span class="p-1 text-xl font-black leading-none text-third hover:text-secondary select-none">
+                        <span>slaw</span>
+                        <span>.</span>
+                    </span>
+                </a>
             </div>
-        </ul>
+        </nav>
+        <div class="flex justify-center">
+            <div class="w-10">
+                <hr
+                    class="mt-4 bg-third h-0.5 border-t-0 bg-transparent bg-gradient-to-r from-transparent via-neutral-500 to-transparent opacity-25 dark:via-neutral-400" />
+            </div>
+        </div>
+        <div class="flex  justify-center">
+            <ul class="mt-4">
+                <img width="32" height="32" src="../../../assets/Threads_Icon.png" alt="topic"/>
+                <div *ngFor="let item of threadList">
+                    <li class="py-2 text-center"><a class="text-third hover:text-secondary"
+                            href="/dashboard/{{item.thread_id}}">{{item.name}}</a></li>
+                </div>
+            </ul>
+        </div>
     </div>
 </div>
