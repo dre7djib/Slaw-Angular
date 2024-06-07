@@ -19,4 +19,9 @@ export class OpenAiService {
     const headers = this.loginService.header();
     return this.http.get(`http://localhost:3000/open-ai/thread/${thread_id}/messages`, { headers });
   }
+
+  getThreadsList(): Observable<any> {
+    const headers = this.loginService.header();
+    return this.http.get(`http://localhost:3000/open-ai/threads/list`, { headers });
+  }
 }

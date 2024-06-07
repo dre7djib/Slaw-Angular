@@ -16,6 +16,7 @@ export const routes: Routes = [
     { path: 'auth/signup', component: SignupComponent },
     { path: 'home', component: HomeComponent},
     { path: 'features', component: FeaturesComponent},
+    { path: 'dashboard/:thread_id', component: DashboardComponent},
     { path: 'dashboard', component: DashboardComponent},
     { path: 'profile', component: ProfileComponent},
     { path: '', redirectTo: 'home', pathMatch: 'full' }
