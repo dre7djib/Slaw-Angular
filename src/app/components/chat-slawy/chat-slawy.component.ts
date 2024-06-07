@@ -5,13 +5,13 @@ import { OpenAiService } from '../../open-ai/open-ai.service';
 import { MarkdownModule } from 'ngx-markdown';
 
 @Component({
-  selector: 'app-chat-slawy-document',
+  selector: 'app-chat-slawy',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, MarkdownModule],
-  templateUrl: './chat-slawy-document.component.html',
-  styleUrl: './chat-slawy-document.component.css'
+  templateUrl: './chat-slawy.component.html',
+  styleUrl: './chat-slawy.component.css'
 })
-export class ChatSlawyDocumentComponent {
+export class ChatSlawyComponent {
   public chatGPTForm: FormGroup;
   public isSubmitted = false;
   public list: [
