@@ -1,9 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { OpenAiService } from '../../open-ai/open-ai.service';
 import { MarkdownModule } from 'ngx-markdown';
 import { ActivatedRoute } from '@angular/router';
+import { UsersService } from '../../users/users.service';
 
 @Component({
   selector: 'app-chat-slawy',
@@ -12,7 +13,7 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './chat-slawy.component.html',
   styleUrl: './chat-slawy.component.css'
 })
-export class ChatSlawyComponent {
+export class ChatSlawyComponent implements OnInit, AfterViewInit{
   public chatGPTForm: FormGroup;
   public isSubmitted = false;
   public list: [
@@ -22,8 +23,9 @@ export class ChatSlawyComponent {
     }
   ];
   public thread_id: string;
+  public photo: string;
 
-  constructor(private openAiService: OpenAiService, private formBuilder: FormBuilder, private route: ActivatedRoute) {}
+  constructor(private openAiService: OpenAiService, private formBuilder: FormBuilder, private route: ActivatedRoute,private userService: UsersService) {}
 
   ngOnInit() {
     this.thread_id = this.route.snapshot.paramMap.get('thread_id')!;
@@ -44,7 +46,7 @@ export class ChatSlawyComponent {
       this.list.push({ role: 'user', response: this.chatGPTForm.value.text })
       this.openAiService.getResponse(this.chatGPTForm.value.text,this.thread_id).subscribe(
         (res: any) => {
-          const  messages = res.data.reverse();
+          const  messages = res.data;
           this.list.push({ role: messages[0].role, response: messages[0].content[0]['text'].value });
         },
         (error) => {
@@ -52,6 +54,7 @@ export class ChatSlawyComponent {
         }
       );
       this.isSubmitted = true;
+      this.chatGPTForm.reset();
       return;
     }
     return;
@@ -69,5 +72,31 @@ export class ChatSlawyComponent {
         console.error('Error:', error);
       }
     );
+  }
+
+  getUserPhoto() {
+    this.userService.getUsers().subscribe(
+      (res: any) => {
+        this.photo = res[0].photo;
+      }
+    );
+  }
+
+  @ViewChildren('itemElement') items: QueryList<ElementRef>;
+
+  ngAfterViewInit() {
+    this.items.changes.subscribe(t => {
+
+      this.scrollToBottom();
+    });
+  }
+
+  scrollToBottom() {
+    setTimeout(() => {
+      const lastItem: ElementRef = this.items.last;
+      if (lastItem) {
+        lastItem.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'end' });
+      }
+    }, 200);
   }
 }
