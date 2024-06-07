@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { SidebarDashboardComponent } from '../../components/sidebar-dashboard/sidebar-dashboard.component';
 import { RouterModule } from '@angular/router';
-import { ChatSlawyDocumentComponent } from '../../components/chat-slawy/chat-slawy-document.component';
+import { ChatSlawyDocumentComponent } from '../../components/chat-slawy/chat-slawy.component';
 
 @Component({
   selector: 'app-dashboard',
