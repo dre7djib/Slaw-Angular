@@ -1,4 +1,4 @@
-<div class="h-screen p-3 w-32">
+<div class="h-screen p-3 w-44">
     <div class="w-full h-full border border-1 rounded-3xl bg-primary">
         <nav class="flex justify-center items-center pt-6">
             <div>
@@ -11,16 +11,18 @@
             </div>
         </nav>
         <div class="flex justify-center">
-            <div class="w-10">
+            <div class="w-20">
                 <hr
                     class="mt-4 bg-third h-0.5 border-t-0 bg-transparent bg-gradient-to-r from-transparent via-neutral-500 to-transparent opacity-25 dark:via-neutral-400" />
             </div>
         </div>
+        <div class="flex justify-center">
+            <img class="mt-4" width="32" height="32" src="../../../assets/img/Threads_Icon.png" alt="topic"/>
+        </div>
         <div class="flex  justify-center">
-            <ul class="mt-4">
-                <img width="32" height="32" src="../../../assets/Threads_Icon.png" alt="topic"/>
+            <ul class="">
                 <div *ngFor="let item of threadList">
-                    <li class="py-2 text-center"><a class="text-third hover:text-secondary"
+                    <li class="py-2 text-center overflow-hidden"><a class="text-third hover:text-secondary"
                             href="/dashboard/{{item.thread_id}}">{{item.name}}</a></li>
                 </div>
             </ul>

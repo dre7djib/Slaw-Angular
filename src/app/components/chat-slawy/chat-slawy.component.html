@@ -1,13 +1,13 @@
 <div class="h-screen p-2 flex-col justify-center items-center">
     <div class="h-full w-full p-10 justify-center items-end flex-col rounded-xl bg-third">
-        <div class="h-full overflow-y-scroll">
-            <div class="ml-20">
+        <div class="h-full overflow-y-scroll flex justify-center">
+            <div class="">
                 <div *ngFor="let item of list; let i = index" #itemElement>
                     <div class="p-4 space-y-4">
                         <div class="flex items-start gap-4">
                             <div class="grid gap-1">
                                 <div class="font-medium text-secondary">{{item.role}}</div>
-                                <div class="prose prose-stone text-primary">
+                                <div class="prose prose-zinc text-primary">
                                     <div markdown ngPreserveWhitespaces>{{item.response}}</div>
                                 </div>
                             </div>
