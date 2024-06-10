@@ -36,14 +36,14 @@ export class LoginComponent{
       try {
         await this.loginService.login(this.loginForm.value.email, this.loginForm.value.password);
         const token = await this.loginService.token();
-        if ( token == null) {
-          this.isLoggedIn = false;
-          this.errorMessage = 'Authentication failed. Please check your credentials.';
-        } else {
+        if ( token != null) {
           this.successMessage = 'Authentication successful. Redirecting...';
           setTimeout(() => {
             this.router.navigate(['/home']);
           }, 2000);
+        } else {
+          this.isLoggedIn = false;
+          this.errorMessage = 'Authentication failed. Please check your credentials.';
         }
       } catch (error) {
         this.isLoggedIn = false;
