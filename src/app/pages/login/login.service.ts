@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class LoginService {
-  url_login = 'http://172.16.234.32:3000/auth/login';
+  url_login = 'http://localhost:3000/auth/login';
 
   constructor(private http: HttpClient,private router: Router) { }
 

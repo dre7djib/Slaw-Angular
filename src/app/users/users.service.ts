@@ -10,7 +10,7 @@ export class UsersService {
   constructor(private http: HttpClient, private loginService:LoginService) { }
 
 
-  url = "http://172.16.234.32:3000/users";
+  url = "http://localhost:3000/users";
 
 
   getUsers() {
