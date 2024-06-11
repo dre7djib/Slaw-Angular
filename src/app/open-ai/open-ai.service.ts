@@ -7,7 +7,7 @@ import { LoginService } from '../pages/login/login.service';
   providedIn: 'root'
 })
 export class OpenAiService {
-  url = 'http://localhost:3000/open-ai/response';
+  url = 'http://172.16.234.32:3000/open-ai/response';
 
   constructor(private http: HttpClient, private loginService:LoginService) { }
   getResponse(text: string, thread:string): Observable<any> {
@@ -17,11 +17,11 @@ export class OpenAiService {
 
   getThreads( thread_id: string): Observable<any> {
     const headers = this.loginService.header();
-    return this.http.get(`http://localhost:3000/open-ai/thread/${thread_id}/messages`, { headers });
+    return this.http.get(`http://172.16.234.32:3000/open-ai/thread/${thread_id}/messages`, { headers });
   }
 
   getThreadsList(): Observable<any> {
     const headers = this.loginService.header();
-    return this.http.get(`http://localhost:3000/open-ai/threads/list`, { headers });
+    return this.http.get(`http://172.16.234.32:3000/open-ai/threads/list`, { headers });
   }
 }

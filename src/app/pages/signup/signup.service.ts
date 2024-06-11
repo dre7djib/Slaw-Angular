@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class SignupService {
-  url_signup = 'http://localhost:3000/users'; 
+  url_signup = 'http://172.16.234.32:3000/users'; 
 
   constructor(private http: HttpClient) { }
 
