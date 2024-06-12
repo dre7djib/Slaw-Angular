@@ -3,7 +3,7 @@ import { AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChildren }
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { OpenAiService } from '../../open-ai/open-ai.service';
 import { MarkdownModule } from 'ngx-markdown';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router} from '@angular/router';
 import { UsersService } from '../../users/users.service';
 
 @Component({
@@ -25,7 +25,7 @@ export class ChatSlawyComponent implements OnInit, AfterViewInit{
   public thread_id: string;
   public photo: string;
 
-  constructor(private openAiService: OpenAiService, private formBuilder: FormBuilder, private route: ActivatedRoute,private userService: UsersService) {}
+  constructor(private openAiService: OpenAiService, private formBuilder: FormBuilder, private route: ActivatedRoute,private userService: UsersService,private router:Router) {}
 
   ngOnInit() {
     this.thread_id = this.route.snapshot.paramMap.get('thread_id')!;
@@ -48,6 +48,8 @@ export class ChatSlawyComponent implements OnInit, AfterViewInit{
         (res: any) => {
           const  messages = res.data;
           this.list.push({ role: messages[0].role, response: messages[0].content[0]['text'].value });
+          this.thread_id = messages[0].thread_id;
+          this.router.navigate([`/dashboard/${this.thread_id}`]);
         },
         (error) => {
           console.error('Error:', error);
