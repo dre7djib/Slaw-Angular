@@ -11,6 +11,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 export class NavbarHomepageComponent implements OnInit {
   public isLoggedIn: boolean;
   public onClick: boolean;
+  isMenuOpen = false;
 
   constructor(@Inject(DOCUMENT) private document: Document) {}
 
@@ -27,5 +28,9 @@ export class NavbarHomepageComponent implements OnInit {
     else {
       this.onClick = true
     }
+  }
+
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
   }
 }
