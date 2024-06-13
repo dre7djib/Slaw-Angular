@@ -7,6 +7,7 @@ import { FeaturesComponent } from './pages/features/features.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { SignupComponent } from './pages/signup/signup.component';
+import { ContactComponent } from './pages/contact/contact.component';
 
 
 export const routes: Routes = [
@@ -18,6 +19,7 @@ export const routes: Routes = [
     { path: 'features', component: FeaturesComponent},
     { path: 'dashboard/:thread_id', component: DashboardComponent},
     { path: 'dashboard', component: DashboardComponent},
+    { path: 'contact', component: ContactComponent},
     { path: 'profile', component: ProfileComponent},
     { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
