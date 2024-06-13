@@ -8,6 +8,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { ContactComponent } from './pages/contact/contact.component';
+import { SubscriptionComponent } from './pages/subscription/subscription.component';
 
 
 export const routes: Routes = [
@@ -16,6 +17,7 @@ export const routes: Routes = [
     { path: 'auth/login', component: LoginComponent },
     { path: 'auth/signup', component: SignupComponent },
     { path: 'home', component: HomeComponent},
+    { path: 'subscription', component: SubscriptionComponent},
     { path: 'features', component: FeaturesComponent},
     { path: 'dashboard/:thread_id', component: DashboardComponent},
     { path: 'dashboard', component: DashboardComponent},
